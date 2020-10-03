@@ -27,5 +27,8 @@ public class PushBox : MonoBehaviour {
                 player.Stagger();
             }
         }
+        else if (otherTag == "Breakable") {
+            Destroy(other.gameObject);
+        }
     }
 }
