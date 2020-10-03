@@ -12,14 +12,18 @@ public class Player : MonoBehaviour {
     public float dashSpeed = 30;
     public float startDashTime = 0.2f;
     public float startDashCooldownTime = 0.5f;
+    public bool isStaggered = false;
+    public float staggerDuration = 0.7f;
 
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private float xInput;
-    private int lastDirection = 1;
-    private float dashTime;
-    private float dashCooldownTime;
-    private bool isDashing = false;
+
+    [HideInInspector] public bool isDashing = false;
+    [HideInInspector] public int lastDirection = 1;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public float xInput;
+    [HideInInspector] public float dashTime;
+    [HideInInspector] public float dashCooldownTime;
+    [HideInInspector] public float originalGravityScale;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -36,13 +40,19 @@ public class Player : MonoBehaviour {
             canDash = true;
         }
 
-        ProcessJumpAction();
         ProcessDashCooldown();
+        if (isStaggered) {
+            return;
+        }
         ProcessDashRequest();
         ProcessDashAction();
+        ProcessJumpAction();
     }
 
     private void FixedUpdate() {
+        if (isStaggered) {
+            return;
+        }
         ProcessWalkAction();
     }
 
@@ -72,11 +82,7 @@ public class Player : MonoBehaviour {
             rb.velocity = new Vector2(lastDirection * dashSpeed, 0f);
         }
         else {
-            dashTime = startDashTime;
-            rb.velocity = new Vector2(0, 0);
-            isDashing = false;
-            canDash = false;
-            dashCooldownTime = startDashCooldownTime;
+            StopDashing();
         }
     }
 
@@ -115,4 +121,29 @@ public class Player : MonoBehaviour {
             Walk(xInput);
         }
     }
+
+    public void StopDashing() {
+        rb.velocity = Vector2.zero;
+        isDashing = false;
+        canDash = false;
+        dashCooldownTime = startDashCooldownTime;
+        dashTime = startDashTime;
+    }
+
+    public void Stagger() {
+        isStaggered = true;
+        originalGravityScale = rb.gravityScale;
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
+        StartCoroutine(staggerTimer(staggerDuration));
+    }
+
+
+    IEnumerator staggerTimer(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        isStaggered = false;
+        rb.gravityScale = originalGravityScale;
+    }
+
+
 }
