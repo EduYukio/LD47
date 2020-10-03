@@ -16,7 +16,7 @@ public class PushBox : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
         if (otherTag == "Player") {
             Player player = other.gameObject.GetComponent<Player>();

@@ -15,13 +15,15 @@ public class GroundCheck : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Ground") {
+        string otherTag = other.gameObject.tag;
+        if (otherTag == "Ground" || otherTag == "Box") {
             playerScript.isGrounded = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Ground") {
+        string otherTag = other.gameObject.tag;
+        if (otherTag == "Ground" || otherTag == "Box") {
             playerScript.isGrounded = false;
         }
     }
