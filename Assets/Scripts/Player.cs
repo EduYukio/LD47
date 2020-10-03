@@ -8,14 +8,20 @@ public class Player : MonoBehaviour {
     public float jumpForce = 5f;
     public bool isGrounded = false;
     public bool canDoubleJump = true;
+    public float dashSpeed = 30;
+    public float startDashTime = 0.2f;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float xInput;
+    private int lastDirection = 1;
+    private float dashTime;
+    private bool isDashing = false;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dashTime = startDashTime;
     }
 
     void Update() {
@@ -33,18 +39,30 @@ public class Player : MonoBehaviour {
                 canDoubleJump = false;
             }
         }
+
+        if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift)) {
+            isDashing = true;
+        }
+
+        if (isDashing) {
+            Dash();
+        }
     }
 
     private void FixedUpdate() {
-        Walk(xInput);
+        if (!isDashing) {
+            Walk(xInput);
+        }
     }
 
     void Walk(float xInput) {
         rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
         if (xInput < 0) {
+            lastDirection = -1;
             spriteRenderer.flipX = true;
         }
         else if (xInput > 0) {
+            lastDirection = 1;
             spriteRenderer.flipX = false;
         }
     }
@@ -55,5 +73,17 @@ public class Player : MonoBehaviour {
 
     public void Die() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void Dash() {
+        if (dashTime > 0) {
+            dashTime -= Time.deltaTime;
+            rb.velocity = new Vector2(lastDirection * dashSpeed, 0f);
+        }
+        else {
+            dashTime = startDashTime;
+            rb.velocity = new Vector2(0, 0);
+            isDashing = false;
+        }
     }
 }
