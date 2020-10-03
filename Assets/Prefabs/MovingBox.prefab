@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 902306576949436998}
   - component: {fileID: 3630552733797553946}
   - component: {fileID: 3630552733797553947}
-  - component: {fileID: 5909423011250553723}
   - component: {fileID: 9101501785297269923}
   m_Layer: 0
   m_Name: MovingBox
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7a59438ad90aa8542af202acf0a7304b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,19 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5909423011250553723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041386595346977196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b31dde5e16480479185f74bebed889, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushSpeed: 20
 --- !u!114 &9101501785297269923
 MonoBehaviour:
   m_ObjectHideFlags: 0

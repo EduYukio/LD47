@@ -199,7 +199,7 @@ MonoBehaviour:
   startDashTime: 0.15
   startDashCooldownTime: 0.2
   isStaggered: 0
-  staggerDuration: 0.4
+  staggerDuration: 0.3
   isDashing: 0
   lastDirection: 1
   rb: {fileID: 0}
