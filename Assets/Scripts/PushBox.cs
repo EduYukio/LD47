@@ -11,13 +11,17 @@ public class PushBox : MonoBehaviour {
     }
 
     void Update() {
-
+        if (rb.velocity == Vector2.zero) {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Player") {
+        string otherTag = other.gameObject.tag;
+        if (otherTag == "Player") {
             Player player = other.gameObject.GetComponent<Player>();
             if (player.isDashing) {
+                rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(player.lastDirection * pushSpeed, rb.velocity.y);
                 player.StopDashing();
                 player.Stagger();
