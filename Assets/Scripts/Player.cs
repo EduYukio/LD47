@@ -9,8 +9,6 @@ public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
     private float xInput;
-    private bool jumpKeyWasPressed = false;
-
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -19,16 +17,12 @@ public class Player : MonoBehaviour {
     void Update() {
         xInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump") && isGrounded) {
-            jumpKeyWasPressed = true;
+            Jump();
         }
     }
 
     private void FixedUpdate() {
         Walk(xInput);
-
-        if (jumpKeyWasPressed) {
-            Jump();
-        }
     }
 
     void Walk(float xInput) {
@@ -36,8 +30,6 @@ public class Player : MonoBehaviour {
     }
 
     void Jump() {
-        Vector2 force = new Vector2(0f, jumpForce);
-        rb.AddForce(force, ForceMode2D.Impulse);
-        jumpKeyWasPressed = false;
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 }
