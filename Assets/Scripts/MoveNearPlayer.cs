@@ -8,6 +8,7 @@ public class MoveNearPlayer : MonoBehaviour {
     Rigidbody2D rb;
     bool isDropping = false;
     bool isMovingBack = false;
+    public bool shouldMoveBack = true;
     public float xThreshold = 5f;
     public float yThreshold = 5f;
     public float moveSpeed = 20f;
@@ -84,8 +85,13 @@ public class MoveNearPlayer : MonoBehaviour {
                 player.Die();
             }
             else if (otherTag == "Ground") {
-                isDropping = false;
-                isMovingBack = true;
+                if (shouldMoveBack) {
+                    isDropping = false;
+                    isMovingBack = true;
+                }
+                else {
+                    Destroy(transform.gameObject);
+                }
             }
         }
     }

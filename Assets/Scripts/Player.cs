@@ -138,12 +138,9 @@ public class Player : MonoBehaviour {
         StartCoroutine(staggerTimer(staggerDuration));
     }
 
-
     IEnumerator staggerTimer(float waitTime) {
         yield return new WaitForSeconds(waitTime);
         isStaggered = false;
         rb.gravityScale = originalGravityScale;
     }
-
-
 }
