@@ -6,29 +6,38 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public bool isGrounded = false;
-    Rigidbody2D rb;
+
+    private Rigidbody2D rb;
+    private float xInput;
+    private bool jumpKeyWasPressed = false;
+
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        float xInput = Input.GetAxisRaw("Horizontal");
-        if (xInput != 0) {
-            Walk(xInput);
-        }
-
+        xInput = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump") && isGrounded) {
+            jumpKeyWasPressed = true;
+        }
+    }
+
+    private void FixedUpdate() {
+        Walk(xInput);
+
+        if (jumpKeyWasPressed) {
             Jump();
         }
     }
 
     void Walk(float xInput) {
-        Vector3 direction = new Vector3(xInput, 0f, 0f);
-        transform.position += direction * Time.deltaTime * moveSpeed;
+        rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
     }
 
     void Jump() {
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        Vector2 force = new Vector2(0f, jumpForce);
+        rb.AddForce(force, ForceMode2D.Impulse);
+        jumpKeyWasPressed = false;
     }
 }

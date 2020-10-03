@@ -293,7 +293,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0041088834, y: -0.37444967}
@@ -2694,7 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82327ad4c0d2864285be64e79e131ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 5.5
   jumpForce: 15
   isGrounded: 0
 --- !u!61 &1479029160
@@ -2739,7 +2739,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 191c1d62cbab3d048a92ebd96ee1b3ae, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
