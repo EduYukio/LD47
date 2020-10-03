@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public bool isGrounded = false;
+    public bool canDoubleJump = true;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -18,9 +19,19 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
+        if (isGrounded) {
+            canDoubleJump = true;
+        }
+
         xInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump") && isGrounded) {
-            Jump();
+        if (Input.GetButtonDown("Jump")) {
+            if (isGrounded) {
+                Jump();
+            }
+            else if (canDoubleJump) {
+                Jump();
+                canDoubleJump = false;
+            }
         }
     }
 
