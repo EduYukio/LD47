@@ -87,7 +87,7 @@ public class Player : MonoBehaviour {
     }
 
     void ProcessDashRequest() {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing && dashCooldownTime <= 0) {
+        if (Input.GetButtonDown("Dash") && canDash && !isDashing && dashCooldownTime <= 0) {
             isDashing = true;
         }
     }
