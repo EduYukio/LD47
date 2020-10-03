@@ -47,7 +47,6 @@ public class MoveNearPlayer : MonoBehaviour {
                 MoveBack();
             }
         }
-
     }
 
     void Drop() {
@@ -80,24 +79,14 @@ public class MoveNearPlayer : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         string otherTag = other.gameObject.tag;
-        // Debug.Log("Taaaaa vindo aqui?");
         if (isDropping) {
             if (otherTag == "Player") {
                 player.Die();
             }
             else if (otherTag == "Ground") {
-                // Debug.Log("Ta vindo aqui?");
                 isDropping = false;
                 isMovingBack = true;
             }
         }
-        // else if (isMovingBack) {
-        //     if (otherTag == "Ground") {
-        //         // Debug.Log("Ta vindo aqui?");
-        //         // isDropping = false;
-        //         // isMovingBack = false;
-        //         StopMoving();
-        //     }
-        // }
     }
 }
