@@ -29,39 +29,21 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
+        xInput = Input.GetAxisRaw("Horizontal");
+
         if (isGrounded) {
             canDoubleJump = true;
             canDash = true;
         }
 
-        xInput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetButtonDown("Jump")) {
-            if (isGrounded) {
-                Jump();
-            }
-            else if (canDoubleJump) {
-                Jump();
-                canDoubleJump = false;
-            }
-        }
-
-        if (dashCooldownTime > 0) {
-            dashCooldownTime -= Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing && dashCooldownTime <= 0) {
-            isDashing = true;
-        }
-
-        if (isDashing) {
-            Dash();
-        }
+        ProcessJumpAction();
+        ProcessDashCooldown();
+        ProcessDashRequest();
+        ProcessDashAction();
     }
 
     private void FixedUpdate() {
-        if (!isDashing) {
-            Walk(xInput);
-        }
+        ProcessWalkAction();
     }
 
     void Walk(float xInput) {
@@ -95,6 +77,42 @@ public class Player : MonoBehaviour {
             isDashing = false;
             canDash = false;
             dashCooldownTime = startDashCooldownTime;
+        }
+    }
+
+    void ProcessDashCooldown() {
+        if (dashCooldownTime > 0) {
+            dashCooldownTime -= Time.deltaTime;
+        }
+    }
+
+    void ProcessDashRequest() {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing && dashCooldownTime <= 0) {
+            isDashing = true;
+        }
+    }
+
+    void ProcessDashAction() {
+        if (isDashing) {
+            Dash();
+        }
+    }
+
+    void ProcessJumpAction() {
+        if (Input.GetButtonDown("Jump")) {
+            if (isGrounded) {
+                Jump();
+            }
+            else if (canDoubleJump) {
+                Jump();
+                canDoubleJump = false;
+            }
+        }
+    }
+
+    void ProcessWalkAction() {
+        if (!isDashing) {
+            Walk(xInput);
         }
     }
 }
