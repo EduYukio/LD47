@@ -196,6 +196,7 @@ MonoBehaviour:
   canDoubleJump: 1
   dashSpeed: 20
   startDashTime: 0.15
+  startDashCooldownTime: 0.2
 --- !u!114 &7115025375854098087
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,18 +10,21 @@ public class Player : MonoBehaviour {
     public bool canDoubleJump = true;
     public float dashSpeed = 30;
     public float startDashTime = 0.2f;
+    public float startDashCooldownTime = 0.5f;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float xInput;
     private int lastDirection = 1;
     private float dashTime;
+    private float dashCooldownTime;
     private bool isDashing = false;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dashTime = startDashTime;
+        dashCooldownTime = 0f;
     }
 
     void Update() {
@@ -40,12 +43,15 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift)) {
+        if (dashCooldownTime <= 0 && !isDashing && Input.GetKeyDown(KeyCode.LeftShift)) {
             isDashing = true;
         }
 
         if (isDashing) {
             Dash();
+        }
+        else if (dashCooldownTime > 0) {
+            dashCooldownTime -= Time.deltaTime;
         }
     }
 
@@ -84,6 +90,7 @@ public class Player : MonoBehaviour {
             dashTime = startDashTime;
             rb.velocity = new Vector2(0, 0);
             isDashing = false;
+            dashCooldownTime = startDashCooldownTime;
         }
     }
 }
