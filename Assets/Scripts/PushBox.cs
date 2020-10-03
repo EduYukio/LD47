@@ -15,15 +15,13 @@ public class PushBox : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        Player player = other.gameObject.GetComponent<Player>();
-        if (player.isDashing) {
-            rb.velocity = new Vector2(player.lastDirection * pushSpeed, rb.velocity.y);
-            player.StopDashing();
-            player.Stagger();
+        if (other.gameObject.tag == "Player") {
+            Player player = other.gameObject.GetComponent<Player>();
+            if (player.isDashing) {
+                rb.velocity = new Vector2(player.lastDirection * pushSpeed, rb.velocity.y);
+                player.StopDashing();
+                player.Stagger();
+            }
         }
-
-        // if (other.gameObject.tag != "Player"){
-
-        // }
     }
 }
