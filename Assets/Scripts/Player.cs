@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float jumpForce = 5f;
     public bool isGrounded = false;
     public bool canDoubleJump = true;
+    public bool canDash = true;
     public float dashSpeed = 30;
     public float startDashTime = 0.2f;
     public float startDashCooldownTime = 0.5f;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour {
     void Update() {
         if (isGrounded) {
             canDoubleJump = true;
+            canDash = true;
         }
 
         xInput = Input.GetAxisRaw("Horizontal");
@@ -43,15 +45,16 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (dashCooldownTime <= 0 && !isDashing && Input.GetKeyDown(KeyCode.LeftShift)) {
+        if (dashCooldownTime > 0) {
+            dashCooldownTime -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing && dashCooldownTime <= 0) {
             isDashing = true;
         }
 
         if (isDashing) {
             Dash();
-        }
-        else if (dashCooldownTime > 0) {
-            dashCooldownTime -= Time.deltaTime;
         }
     }
 
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour {
             dashTime = startDashTime;
             rb.velocity = new Vector2(0, 0);
             isDashing = false;
+            canDash = false;
             dashCooldownTime = startDashCooldownTime;
         }
     }
