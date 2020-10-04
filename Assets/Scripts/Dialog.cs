@@ -13,6 +13,10 @@ public class Dialog : MonoBehaviour {
     public Player player;
     public Vector3 positionToSpawnDialog;
     public bool dialogActive = false;
+    public bool isLevel30 = false;
+    public GameObject nextLevel;
+    public GameObject endGameText;
+    public bool playerKeepsWalking = false;
 
     public GameObject continueButton;
     void Start() {
@@ -28,6 +32,10 @@ public class Dialog : MonoBehaviour {
         float dist = (player.transform.position - positionToSpawnDialog).magnitude;
         if (!dialogActive && dist < 0.5f) {
             ActivateDialog();
+        }
+
+        if (playerKeepsWalking) {
+            player.rb.velocity = new Vector3(5f, 0f, 0f);
         }
     }
 
@@ -55,7 +63,6 @@ public class Dialog : MonoBehaviour {
     public void ActivateDialog() {
         player.rb.velocity = Vector3.zero;
         player.disableControls = true;
-        // player.xInput = 0;
         blackBackground.SetActive(true);
         StartCoroutine(Type());
         dialogActive = true;
@@ -64,5 +71,15 @@ public class Dialog : MonoBehaviour {
     public void DeactivateDialog() {
         player.disableControls = false;
         blackBackground.SetActive(false);
+        if (isLevel30) {
+            player.disableControls = true;
+            nextLevel.SetActive(false);
+
+            GameObject camera = GameObject.FindWithTag("MainCamera");
+            camera.transform.SetParent(null);
+
+            playerKeepsWalking = true;
+            endGameText.SetActive(true);
+        }
     }
 }
