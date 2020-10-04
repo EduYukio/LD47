@@ -203,6 +203,7 @@ MonoBehaviour:
   isOnTopOfMovingPlatform: 0
   gotDoubleJumpItem: 0
   gotDashItem: 0
+  deathAnimDuration: 0.3
   isDashing: 0
   lastDirection: 1
   rb: {fileID: 0}
