@@ -29,8 +29,8 @@ public class Dialog : MonoBehaviour {
             continueButton.SetActive(true);
         }
 
-        float dist = (player.transform.position - positionToSpawnDialog).magnitude;
-        if (!dialogActive && dist < 0.5f) {
+        float xDist = Mathf.Abs(player.transform.position.x - positionToSpawnDialog.x);
+        if (!dialogActive && xDist < 0.5f) {
             ActivateDialog();
         }
 
