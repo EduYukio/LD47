@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4798216027233881157, guid: 4f9d8bc87f57fef46a4c9a8a7cc56119, type: 3}
       propertyPath: moveSpeed
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4798216027233881157, guid: 4f9d8bc87f57fef46a4c9a8a7cc56119, type: 3}
       propertyPath: yThreshold

@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bafea830b4fe124a89f5e6ee95fc0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallMultiplier: 4
+  fallMultiplier: 3.5
   lowJumpMultiplier: 15
 --- !u!68 &7115025375854098086
 EdgeCollider2D:

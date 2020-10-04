@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958823866958354521, guid: 25bc379fab0a6954490cce48729d1088, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.25
+      value: -1.375
       objectReference: {fileID: 0}
     - target: {fileID: 1958823866958354521, guid: 25bc379fab0a6954490cce48729d1088, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958823866958354521, guid: 25bc379fab0a6954490cce48729d1088, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1958823866958354521, guid: 25bc379fab0a6954490cce48729d1088, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13775,6 +13775,10 @@ PrefabInstance:
     - target: {fileID: 7115025375854098084, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
       propertyPath: m_SleepingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115025375854098087, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
+      propertyPath: fallMultiplier
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7115025375854098089, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
       propertyPath: m_Name
