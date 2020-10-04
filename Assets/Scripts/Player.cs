@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     public bool gotDashItem = false;
     public float deathAnimDuration = 0.4f;
     private bool disableControls = false;
+    public bool isLevel30 = false;
+    public Teleporter teleporterScript;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
@@ -33,6 +35,9 @@ public class Player : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (isLevel30) {
+            teleporterScript = FindObjectOfType<Teleporter>();
+        }
 
         dashTime = startDashTime;
         dashCooldownTime = 0f;
@@ -93,7 +98,12 @@ public class Player : MonoBehaviour {
     }
 
     public void Die() {
-        StartCoroutine(deathAnimation(deathAnimDuration));
+        if (isLevel30) {
+            teleporterScript.shouldTeleport = true;
+        }
+        else {
+            StartCoroutine(deathAnimation(deathAnimDuration));
+        }
     }
 
     void Dash() {
