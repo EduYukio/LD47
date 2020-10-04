@@ -44,4 +44,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2.DoubleJumpLevels/Level 13.unity
     guid: 88837c1b10aa95443aaabdbba9589d7e
+  - enabled: 1
+    path: Assets/Scenes/2.DoubleJumpLevels/Level 14.unity
+    guid: d2225693589d3174f94d4fa5a543156a
+  - enabled: 1
+    path: Assets/Scenes/2.DoubleJumpLevels/Level 15.unity
+    guid: 4ab182704cd182745bc97a96e5923597
+  - enabled: 1
+    path: Assets/Scenes/2.DoubleJumpLevels/Level 16.unity
+    guid: 150cccc2ab8298445b1bffae018f6d9d
+  - enabled: 1
+    path: Assets/Scenes/2.DoubleJumpLevels/Level 17.unity
+    guid: bcc17c7ae803cda4bbe04e18896af8f3
+  - enabled: 1
+    path: Assets/Scenes/2.DoubleJumpLevels/Level 18.unity
+    guid: 090263a4098f99b45b2511205f2624af
+  - enabled: 1
+    path: Assets/Scenes/3.DashLevels/Level 19.unity
+    guid: f04d78cf2d5154e42b6c70e721e15090
+  - enabled: 1
+    path: Assets/Scenes/3.DashLevels/Level 20.unity
+    guid: 18a2cc2e62bde3a4182f264870164cc4
+  - enabled: 1
+    path: Assets/Scenes/3.DashLevels/Level 21.unity
+    guid: 1c837908b1e268c49af3ae3399705e4f
+  - enabled: 1
+    path: Assets/Scenes/3.DashLevels/Level 22.unity
+    guid: 582ad1f09585f0b4ebac550d8900cd06
   m_configObjects: {}
