@@ -98,7 +98,8 @@ public class MoveNearPlayer : MonoBehaviour {
                     isMovingBack = true;
                 }
                 else {
-                    Destroy(transform.gameObject);
+                    rb.bodyType = RigidbodyType2D.Static;
+                    Destroy(transform.gameObject, 0.2f);
                 }
             }
             else if (otherTag == "Estaca") {

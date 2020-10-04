@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
     public bool isOnTopOfMovingPlatform = false;
     public bool gotDoubleJumpItem = false;
     public bool gotDashItem = false;
+    public float deathAnimDuration = 0.4f;
+    private bool disableControls = false;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
+        if (disableControls) return;
+
         xInput = Input.GetAxisRaw("Horizontal");
 
         if (isGrounded) {
@@ -54,7 +58,7 @@ public class Player : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (isStaggered) {
+        if (isStaggered || disableControls) {
             return;
         }
         ProcessWalkAction();
@@ -81,7 +85,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Die() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(deathAnimation(deathAnimDuration));
     }
 
     void Dash() {
@@ -154,4 +158,11 @@ public class Player : MonoBehaviour {
         rb.gravityScale = originalGravityScale;
     }
 
+    IEnumerator deathAnimation(float waitTime) {
+        rb.bodyType = RigidbodyType2D.Static;
+        disableControls = true;
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        disableControls = false;
+    }
 }
