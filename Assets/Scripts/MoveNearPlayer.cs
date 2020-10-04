@@ -35,7 +35,7 @@ public class MoveNearPlayer : MonoBehaviour {
     void FixedUpdate() {
         float xDist = Mathf.Abs(transform.position.x - player.transform.position.x);
         float yDist = Mathf.Abs(transform.position.y - player.transform.position.y);
-        bool isAtOriginalPosition = (transform.position - originalPosition).magnitude < 0.1f;
+        bool isAtOriginalPosition = (transform.position - originalPosition).magnitude < 0.2f;
         if (isAtOriginalPosition) {
             if (isMovingBack) {
                 StopMoving();
@@ -92,7 +92,7 @@ public class MoveNearPlayer : MonoBehaviour {
             if (otherTag == "Player" && shouldKillPlayer) {
                 player.Die();
             }
-            else if (otherTag == "Ground") {
+            else if (otherTag == "Ground" || otherTag == "Box") {
                 if (shouldMoveBack) {
                     isDropping = false;
                     isMovingBack = true;
