@@ -36,6 +36,14 @@ public class Player : MonoBehaviour {
 
         dashTime = startDashTime;
         dashCooldownTime = 0f;
+
+        if (GameObject.FindWithTag("DoubleJump")) {
+            gotDoubleJumpItem = true;
+        }
+
+        if (GameObject.FindWithTag("Dash")) {
+            gotDashItem = true;
+        }
     }
 
     void Update() {

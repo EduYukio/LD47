@@ -8,6 +8,8 @@ TagManager:
   - Box
   - Breakable
   - Estaca
+  - DoubleJump
+  - Dash
   layers:
   - Default
   - TransparentFX
