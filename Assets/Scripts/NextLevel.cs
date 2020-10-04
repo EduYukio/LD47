@@ -17,7 +17,11 @@ public class NextLevel : MonoBehaviour {
         if (dialogManager) {
             Dialog script = dialogManager.GetComponent<Dialog>();
             script.ResetBool();
+
         }
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        Player player = playerObj.GetComponent<Player>();
+        player.ResetBool();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

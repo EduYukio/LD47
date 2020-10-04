@@ -207,6 +207,7 @@ MonoBehaviour:
   disableControls: 0
   isLevel30: 0
   teleporterScript: {fileID: 0}
+  respawnPosition: {x: -9.5, y: 7, z: 0}
   isDashing: 0
   lastDirection: 1
   rb: {fileID: 0}

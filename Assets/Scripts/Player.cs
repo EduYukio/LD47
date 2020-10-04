@@ -21,6 +21,8 @@ public class Player : MonoBehaviour {
     public bool disableControls = false;
     public bool isLevel30 = false;
     public Teleporter teleporterScript;
+    public static Vector3 respawnPosition;
+    public static bool alreadyGotCheckpoint = false;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
@@ -32,9 +34,19 @@ public class Player : MonoBehaviour {
     [HideInInspector] public float dashCooldownTime;
     [HideInInspector] public float originalGravityScale;
 
+    private void Awake() {
+        if (respawnPosition == Vector3.zero) {
+            respawnPosition = new Vector3(-9.5f, 7f, 0);
+        }
+        transform.position = respawnPosition;
+    }
+
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // spriteRenderer.enabled = false;
+        // spriteRenderer.enabled = true;
+
         if (isLevel30) {
             teleporterScript = FindObjectOfType<Teleporter>();
         }
@@ -181,6 +193,17 @@ public class Player : MonoBehaviour {
         disableControls = true;
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // transform.position = respawnPosition;
         disableControls = false;
+    }
+
+    public void ActivateBool(Vector3 newPos) {
+        respawnPosition = newPos;
+        // alreadyGotCheckpoint = true;
+    }
+
+    public void ResetBool() {
+        respawnPosition = new Vector3(-9.5f, 7, 0);
+        // alreadyGotCheckpoint = false;
     }
 }
