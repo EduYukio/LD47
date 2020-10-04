@@ -6,27 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 1.unity
+    path: Assets/Scenes/1.JumpBlock/Level 1.unity
     guid: 52664d27f2ba6584ab9835502540a726
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 2.unity
+    path: Assets/Scenes/1.JumpBlock/Level 2.unity
     guid: 8c34e9abaf8148c448498b476ebb29c4
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 3.unity
+    path: Assets/Scenes/1.JumpBlock/Level 3.unity
     guid: d03b36e97ffdb934faba61a206f5e2d9
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 4.unity
+    path: Assets/Scenes/1.JumpBlock/Level 4.unity
     guid: 996c1290b72633547af3fa50e896441a
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 5.unity
+    path: Assets/Scenes/1.JumpBlock/Level 5.unity
     guid: 17c79b38cde365a4c869bd502d4086aa
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 6.unity
+    path: Assets/Scenes/1.JumpBlock/Level 6.unity
     guid: b65932c5d13b8db4aba5d0b3453f5268
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 7.unity
+    path: Assets/Scenes/1.JumpBlock/Level 7.unity
     guid: 20df0e17f71ed9149b711a0c0dcae5db
   - enabled: 1
-    path: Assets/Scenes/BasicLevel 8.unity
+    path: Assets/Scenes/1.JumpBlock/Level 8.unity
     guid: 859d4136bdb75f34cb858e50a9b849ef
   m_configObjects: {}
