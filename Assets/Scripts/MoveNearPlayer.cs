@@ -65,6 +65,7 @@ public class MoveNearPlayer : MonoBehaviour {
         else if (direction == MoveDirection.Right) {
             dropDirection = Vector2.right;
         }
+        if (rb.bodyType == RigidbodyType2D.Static) return;
         rb.velocity = dropDirection * moveSpeed;
     }
 
@@ -92,15 +93,12 @@ public class MoveNearPlayer : MonoBehaviour {
             if (otherTag == "Player" && shouldKillPlayer) {
                 player.Die();
             }
+            else if (otherTag == "Breakable") {
+                Destroy(other.gameObject);
+                MoveBackOrSelfDestroy();
+            }
             else if (otherTag == "Ground" || otherTag == "Box") {
-                if (shouldMoveBack) {
-                    isDropping = false;
-                    isMovingBack = true;
-                }
-                else {
-                    rb.bodyType = RigidbodyType2D.Static;
-                    Destroy(transform.gameObject, 0.2f);
-                }
+                MoveBackOrSelfDestroy();
             }
             else if (otherTag == "Estaca") {
                 Vector3 newPos = transform.position + new Vector3(0, 0.2f, 0);
@@ -117,6 +115,17 @@ public class MoveNearPlayer : MonoBehaviour {
         if (otherTag == "Player" && !shouldKillPlayer) {
             player.isOnTopOfMovingPlatform = false;
             player.movingPlatform = null;
+        }
+    }
+
+    void MoveBackOrSelfDestroy() {
+        if (shouldMoveBack) {
+            isDropping = false;
+            isMovingBack = true;
+        }
+        else {
+            rb.bodyType = RigidbodyType2D.Static;
+            Destroy(transform.gameObject, 0.2f);
         }
     }
 }
