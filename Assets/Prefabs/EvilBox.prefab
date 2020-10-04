@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3630552733797553947}
   - component: {fileID: 9101501785297269923}
   m_Layer: 0
-  m_Name: MovingBox
+  m_Name: EvilBox
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,8 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3bfab0c3734354b81e0be773c59769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 994995251, guid: baab313ed6b73fd49b0220fd31684198, type: 3}
+  shouldMoveBack: 1
+  shouldKillPlayer: 1
   xThreshold: 0.5
   yThreshold: 10
   moveSpeed: 17
   moveBackSpeed: 5
   direction: 1
+  pushableBoxPrefab: {fileID: 0}

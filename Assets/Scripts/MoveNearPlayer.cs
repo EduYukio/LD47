@@ -21,8 +21,8 @@ public class MoveNearPlayer : MonoBehaviour {
         Right,
     };
     public MoveDirection direction = MoveDirection.Down;
+    public GameObject pushableBoxPrefab;
     Vector2 dropDirection = Vector2.down;
-
     Vector3 originalPosition;
 
     void Start() {
@@ -100,6 +100,13 @@ public class MoveNearPlayer : MonoBehaviour {
                 else {
                     Destroy(transform.gameObject);
                 }
+            }
+            else if (otherTag == "Estaca") {
+                Vector3 newPos = transform.position + new Vector3(0, 0.2f, 0);
+                GameObject newBox = Instantiate(pushableBoxPrefab, newPos, Quaternion.identity, other.transform);
+                newBox.GetComponent<PushBox>().isOnTopOfMovingPlatform = true;
+
+                Destroy(transform.gameObject);
             }
         }
     }

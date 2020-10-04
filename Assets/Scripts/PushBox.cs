@@ -5,13 +5,19 @@ using UnityEngine;
 public class PushBox : MonoBehaviour {
     Rigidbody2D rb;
     public float pushSpeed = 10f;
+    public bool isOnTopOfMovingPlatform = false;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
-        if (rb.velocity == Vector2.zero) {
+        if (isOnTopOfMovingPlatform) {
+            if (rb.bodyType == RigidbodyType2D.Dynamic) {
+                rb.bodyType = RigidbodyType2D.Kinematic;
+            }
+        }
+        else if (rb.velocity == Vector2.zero) {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
@@ -19,6 +25,11 @@ public class PushBox : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
         if (otherTag == "Player") {
+            if (isOnTopOfMovingPlatform) {
+                transform.SetParent(null);
+                isOnTopOfMovingPlatform = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+            }
             Player player = other.gameObject.GetComponent<Player>();
             if (player.isDashing) {
                 rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
