@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
     public bool isStaggered = false;
     public float staggerDuration = 0.7f;
     public bool isOnTopOfMovingPlatform = false;
+    public bool gotDoubleJumpItem = false;
+    public bool gotDashItem = false;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
@@ -99,6 +101,8 @@ public class Player : MonoBehaviour {
     }
 
     void ProcessDashRequest() {
+        if (!gotDashItem) return;
+
         if (Input.GetButtonDown("Dash") && canDash && !isDashing && dashCooldownTime <= 0) {
             isDashing = true;
         }
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour {
             if (isGrounded) {
                 Jump();
             }
-            else if (canDoubleJump) {
+            else if (gotDoubleJumpItem && canDoubleJump) {
                 Jump();
                 canDoubleJump = false;
             }

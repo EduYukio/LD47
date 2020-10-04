@@ -200,10 +200,14 @@ MonoBehaviour:
   startDashCooldownTime: 0.2
   isStaggered: 0
   staggerDuration: 0.3
+  isOnTopOfMovingPlatform: 0
+  gotDoubleJumpItem: 0
+  gotDashItem: 0
   isDashing: 0
   lastDirection: 1
   rb: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  movingPlatform: {fileID: 0}
   xInput: 0
   dashTime: 0
   dashCooldownTime: 0
@@ -238,11 +242,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.18032955, y: -0.43530476}
-  - {x: 0.19490051, y: -0.43807903}
-  - {x: 0.20423068, y: 0.37911665}
-  - {x: -0.20096093, y: 0.37601542}
-  - {x: -0.18356806, y: -0.43236098}
+  - {x: -0.18, y: -0.44}
+  - {x: 0.19, y: -0.44}
+  - {x: 0.2, y: 0.38}
+  - {x: -0.2, y: 0.38}
+  - {x: -0.18, y: -0.44}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

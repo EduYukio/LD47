@@ -12762,44 +12762,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baab313ed6b73fd49b0220fd31684198, type: 3}
---- !u!1 &2055212556 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3882736132690306446, guid: 1c7b78f105b25314d9786231dc8fc3ab, type: 3}
-  m_PrefabInstance: {fileID: 874150230132787901}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2055212557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055212556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b5f9c873c7eaa42afba1497c945825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2055212563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055212556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c3bfab0c3734354b81e0be773c59769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  shouldMoveBack: 1
-  shouldKillPlayer: 0
-  xThreshold: 8
-  yThreshold: 0.5
-  moveSpeed: 2
-  moveBackSpeed: 5
-  direction: 2
-  pushableBoxPrefab: {fileID: 0}
 --- !u!1001 &874150230132787901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12807,10 +12769,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3505472755279402898, guid: 1c7b78f105b25314d9786231dc8fc3ab, type: 3}
-      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 762626519948833776, guid: 1c7b78f105b25314d9786231dc8fc3ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.54
@@ -12857,10 +12815,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3882736132690306446, guid: 1c7b78f105b25314d9786231dc8fc3ab, type: 3}
       propertyPath: m_Name
-      value: Estaca
-      objectReference: {fileID: 0}
-    - target: {fileID: 3882736132690306446, guid: 1c7b78f105b25314d9786231dc8fc3ab, type: 3}
-      propertyPath: m_TagString
       value: Estaca
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13112,50 +13066,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[0].y
-      value: -0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[0].x
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[1].y
-      value: -0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[1].x
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[2].x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[2].y
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[3].x
-      value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[3].y
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[4].x
-      value: -0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098086, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_Points.Array.data[4].y
-      value: -0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115025375854098088, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7115025375854098089, guid: fc8b8d3f2d0edf14e9913eadead02dbc, type: 3}
       propertyPath: m_Name
       value: Player

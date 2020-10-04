@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 7305183563251618116}
   - component: {fileID: 3854089195346379603}
   - component: {fileID: -3505472755279402898}
+  - component: {fileID: 2055212557}
+  - component: {fileID: 2055212563}
   m_Layer: 0
   m_Name: Estaca
-  m_TagString: Untagged
+  m_TagString: Estaca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,3 +162,36 @@ PolygonCollider2D:
     - - {x: -1, y: -0.025}
       - {x: -0.4, y: -0.24}
       - {x: -0.4, y: 0.16}
+--- !u!114 &2055212557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882736132690306446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b5f9c873c7eaa42afba1497c945825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2055212563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882736132690306446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c3bfab0c3734354b81e0be773c59769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  shouldMoveBack: 1
+  shouldKillPlayer: 0
+  xThreshold: 8
+  yThreshold: 0.5
+  moveSpeed: 2
+  moveBackSpeed: 5
+  direction: 2
+  pushableBoxPrefab: {fileID: 0}
