@@ -14,12 +14,13 @@ public class Player : MonoBehaviour {
     public float startDashCooldownTime = 0.5f;
     public bool isStaggered = false;
     public float staggerDuration = 0.7f;
-
+    public bool isOnTopOfMovingPlatform = false;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public MoveNearPlayer movingPlatform;
     [HideInInspector] public float xInput;
     [HideInInspector] public float dashTime;
     [HideInInspector] public float dashCooldownTime;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         dashTime = startDashTime;
         dashCooldownTime = 0f;
     }
@@ -58,6 +60,10 @@ public class Player : MonoBehaviour {
 
     void Walk(float xInput) {
         rb.velocity = new Vector2(xInput * moveSpeed, rb.velocity.y);
+        if (isOnTopOfMovingPlatform) {
+            rb.velocity += movingPlatform.rb.velocity;
+        }
+
         if (xInput < 0) {
             lastDirection = -1;
             spriteRenderer.flipX = true;
@@ -143,4 +149,5 @@ public class Player : MonoBehaviour {
         isStaggered = false;
         rb.gravityScale = originalGravityScale;
     }
+
 }

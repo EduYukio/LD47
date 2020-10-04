@@ -10,20 +10,16 @@ public class GroundCheck : MonoBehaviour {
         playerScript = playerObject.GetComponent<Player>();
     }
 
-    void Update() {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (otherTag == "Ground" || otherTag == "Box") {
+        if (otherTag == "Ground" || otherTag == "Box" || otherTag == "Estaca") {
             playerScript.isGrounded = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
-        if (otherTag == "Ground" || otherTag == "Box") {
+        if (otherTag == "Ground" || otherTag == "Box" || otherTag == "Estaca") {
             playerScript.isGrounded = false;
         }
     }

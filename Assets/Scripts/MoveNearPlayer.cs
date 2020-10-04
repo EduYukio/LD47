@@ -5,10 +5,11 @@ using UnityEngine;
 public class MoveNearPlayer : MonoBehaviour {
     GameObject playerObject;
     Player player;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     bool isDropping = false;
     bool isMovingBack = false;
     public bool shouldMoveBack = true;
+    public bool shouldKillPlayer = true;
     public float xThreshold = 5f;
     public float yThreshold = 5f;
     public float moveSpeed = 20f;
@@ -31,7 +32,7 @@ public class MoveNearPlayer : MonoBehaviour {
         originalPosition = transform.position;
     }
 
-    void Update() {
+    void FixedUpdate() {
         float xDist = Mathf.Abs(transform.position.x - player.transform.position.x);
         float yDist = Mathf.Abs(transform.position.y - player.transform.position.y);
         bool isAtOriginalPosition = (transform.position - originalPosition).magnitude < 0.1f;
@@ -80,8 +81,15 @@ public class MoveNearPlayer : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         string otherTag = other.gameObject.tag;
+
+        if (!shouldKillPlayer && otherTag == "Player") {
+            if (Mathf.Abs(player.transform.position.y - transform.position.y) < 0.5f) return;
+            player.isOnTopOfMovingPlatform = true;
+            player.movingPlatform = GetComponent<MoveNearPlayer>();
+        }
+
         if (isDropping) {
-            if (otherTag == "Player") {
+            if (otherTag == "Player" && shouldKillPlayer) {
                 player.Die();
             }
             else if (otherTag == "Ground") {
@@ -93,6 +101,14 @@ public class MoveNearPlayer : MonoBehaviour {
                     Destroy(transform.gameObject);
                 }
             }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        string otherTag = other.gameObject.tag;
+        if (otherTag == "Player" && !shouldKillPlayer) {
+            player.isOnTopOfMovingPlatform = false;
+            player.movingPlatform = null;
         }
     }
 }
