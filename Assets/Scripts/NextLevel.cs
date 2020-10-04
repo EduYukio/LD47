@@ -13,6 +13,12 @@ public class NextLevel : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        GameObject dialogManager = GameObject.FindWithTag("DialogManager");
+        if (dialogManager) {
+            Dialog script = dialogManager.GetComponent<Dialog>();
+            script.ResetBool();
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

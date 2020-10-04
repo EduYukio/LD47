@@ -17,6 +17,7 @@ public class Dialog : MonoBehaviour {
     public GameObject nextLevel;
     public GameObject endGameText;
     public bool playerKeepsWalking = false;
+    public static bool alreadyShowedOnThisLevel = false;
 
     public GameObject continueButton;
     void Start() {
@@ -30,7 +31,7 @@ public class Dialog : MonoBehaviour {
         }
 
         float xDist = Mathf.Abs(player.transform.position.x - positionToSpawnDialog.x);
-        if (!dialogActive && xDist < 0.5f) {
+        if (!alreadyShowedOnThisLevel && !dialogActive && xDist < 0.5f) {
             ActivateDialog();
         }
 
@@ -71,6 +72,7 @@ public class Dialog : MonoBehaviour {
     public void DeactivateDialog() {
         player.disableControls = false;
         blackBackground.SetActive(false);
+        alreadyShowedOnThisLevel = true;
         if (isLevel30) {
             player.disableControls = true;
             nextLevel.SetActive(false);
@@ -81,5 +83,8 @@ public class Dialog : MonoBehaviour {
             playerKeepsWalking = true;
             endGameText.SetActive(true);
         }
+    }
+    public void ResetBool() {
+        alreadyShowedOnThisLevel = false;
     }
 }
