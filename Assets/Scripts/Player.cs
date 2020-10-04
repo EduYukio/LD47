@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
     public bool gotDoubleJumpItem = false;
     public bool gotDashItem = false;
     public float deathAnimDuration = 0.4f;
-    private bool disableControls = false;
+    public bool disableControls = false;
     public bool isLevel30 = false;
     public Teleporter teleporterScript;
 

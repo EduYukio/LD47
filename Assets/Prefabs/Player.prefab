@@ -204,6 +204,9 @@ MonoBehaviour:
   gotDoubleJumpItem: 0
   gotDashItem: 0
   deathAnimDuration: 0.3
+  disableControls: 0
+  isLevel30: 0
+  teleporterScript: {fileID: 0}
   isDashing: 0
   lastDirection: 1
   rb: {fileID: 0}
