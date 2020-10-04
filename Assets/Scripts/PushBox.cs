@@ -25,13 +25,13 @@ public class PushBox : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         string otherTag = other.gameObject.tag;
         if (otherTag == "Player") {
-            if (isOnTopOfMovingPlatform) {
-                transform.SetParent(null);
-                isOnTopOfMovingPlatform = false;
-                rb.bodyType = RigidbodyType2D.Dynamic;
-            }
             Player player = other.gameObject.GetComponent<Player>();
             if (player.isDashing) {
+                if (isOnTopOfMovingPlatform) {
+                    transform.SetParent(null);
+                    isOnTopOfMovingPlatform = false;
+                    rb.bodyType = RigidbodyType2D.Dynamic;
+                }
                 rb.constraints = ~RigidbodyConstraints2D.FreezePositionX;
                 rb.velocity = new Vector2(player.lastDirection * pushSpeed, rb.velocity.y);
                 player.StopDashing();
