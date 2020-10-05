@@ -8,7 +8,7 @@ public class ItemClickHandler : MonoBehaviour {
     public Button button;
 
     void Update() {
-        if (Input.GetKeyDown(key)) {
+        if (Input.GetKeyDown(key) || Input.GetButtonDown("Jump") || Input.GetButtonDown("Dash")) {
             button.onClick.Invoke();
         }
     }
