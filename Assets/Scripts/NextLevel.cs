@@ -4,25 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour {
-    void Start() {
-
-    }
-
-    void Update() {
-
-    }
+    private Vector3 playerOriginalPosition = new Vector3(-9.5f, 7, 0);
 
     private void OnTriggerEnter2D(Collider2D other) {
         GameObject dialogManager = GameObject.FindWithTag("DialogManager");
         if (dialogManager) {
-            Dialog script = dialogManager.GetComponent<Dialog>();
-            script.ResetBool();
-
+            Dialog.alreadyShowedOnThisLevel = false;
         }
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        Player player = playerObj.GetComponent<Player>();
-        player.ResetBool();
-
+        Player.respawnPosition = playerOriginalPosition;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -13,7 +13,7 @@ public class Teleporter : MonoBehaviour {
 
     void Update() {
         if (shouldTeleport) {
-            StartCoroutine(teleport(0.1f));
+            StartCoroutine(Teleport(0.1f));
             shouldTeleport = false;
         }
     }
@@ -22,7 +22,7 @@ public class Teleporter : MonoBehaviour {
         shouldTeleport = true;
     }
 
-    IEnumerator teleport(float waitTime) {
+    IEnumerator Teleport(float waitTime) {
         player.GetComponent<SpriteRenderer>().enabled = false;
         player.rb.position = new Vector3(-9.55000019f, 9.03999996f, 0);
         yield return new WaitForSeconds(waitTime);

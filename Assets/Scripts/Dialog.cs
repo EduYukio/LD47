@@ -18,8 +18,8 @@ public class Dialog : MonoBehaviour {
     public GameObject endGameText;
     public bool playerKeepsWalking = false;
     public static bool alreadyShowedOnThisLevel = false;
-
     public GameObject continueButton;
+
     void Start() {
         GameObject playerObject = GameObject.FindWithTag("Player");
         player = playerObject.GetComponent<Player>();
@@ -83,8 +83,5 @@ public class Dialog : MonoBehaviour {
             playerKeepsWalking = true;
             endGameText.SetActive(true);
         }
-    }
-    public void ResetBool() {
-        alreadyShowedOnThisLevel = false;
     }
 }

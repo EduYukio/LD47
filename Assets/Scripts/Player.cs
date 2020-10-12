@@ -22,7 +22,6 @@ public class Player : MonoBehaviour {
     public bool isLevel30 = false;
     public Teleporter teleporterScript;
     public static Vector3 respawnPosition;
-    public static bool alreadyGotCheckpoint = false;
 
     [HideInInspector] public bool isDashing = false;
     [HideInInspector] public int lastDirection = 1;
@@ -44,8 +43,6 @@ public class Player : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // spriteRenderer.enabled = false;
-        // spriteRenderer.enabled = true;
 
         if (isLevel30) {
             teleporterScript = FindObjectOfType<Teleporter>();
@@ -114,7 +111,7 @@ public class Player : MonoBehaviour {
             teleporterScript.shouldTeleport = true;
         }
         else {
-            StartCoroutine(deathAnimation(deathAnimDuration));
+            StartCoroutine(DeathAnimation(deathAnimDuration));
         }
     }
 
@@ -179,31 +176,20 @@ public class Player : MonoBehaviour {
         originalGravityScale = rb.gravityScale;
         rb.gravityScale = 0;
         rb.velocity = Vector2.zero;
-        StartCoroutine(staggerTimer(staggerDuration));
+        StartCoroutine(StaggerTimer(staggerDuration));
     }
 
-    IEnumerator staggerTimer(float waitTime) {
+    IEnumerator StaggerTimer(float waitTime) {
         yield return new WaitForSeconds(waitTime);
         isStaggered = false;
         rb.gravityScale = originalGravityScale;
     }
 
-    IEnumerator deathAnimation(float waitTime) {
+    IEnumerator DeathAnimation(float waitTime) {
         rb.bodyType = RigidbodyType2D.Static;
         disableControls = true;
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        // transform.position = respawnPosition;
         disableControls = false;
-    }
-
-    public void ActivateBool(Vector3 newPos) {
-        respawnPosition = newPos;
-        // alreadyGotCheckpoint = true;
-    }
-
-    public void ResetBool() {
-        respawnPosition = new Vector3(-9.5f, 7, 0);
-        // alreadyGotCheckpoint = false;
     }
 }

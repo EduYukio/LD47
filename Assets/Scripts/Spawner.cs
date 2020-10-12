@@ -6,17 +6,15 @@ public class Spawner : MonoBehaviour {
     public GameObject objectToSpawn;
     public float spawnTimer = 3f;
     public bool needToSpawn = true;
-    void Start() {
-    }
 
     void Update() {
         if (needToSpawn) {
-            StartCoroutine(spawn(spawnTimer));
+            StartCoroutine(Spawn(spawnTimer));
             needToSpawn = false;
         }
     }
 
-    IEnumerator spawn(float waitTime) {
+    IEnumerator Spawn(float waitTime) {
         Instantiate(objectToSpawn, transform.position, transform.rotation);
         yield return new WaitForSeconds(waitTime);
         needToSpawn = true;
